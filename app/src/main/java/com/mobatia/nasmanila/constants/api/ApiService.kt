@@ -7,6 +7,11 @@ import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
 
 interface ApiService {
+    @FormUrlEncoded
+    @POST("oauth/access_token")
+    fun accessToken(
+        @Field("authorization-user") user_code: String
+    ): Call<ResponseBody>
 //    @FormUrlEncoded
 //    @POST("api/parent_signup")
 //    fun signUp(

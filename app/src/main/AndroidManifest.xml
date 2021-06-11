@@ -12,8 +12,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NASManilaKotlin"
         tools:targetApi="n">
+        <activity android:name=".activities.tutorial.TutorialActivity"></activity>
+        <activity android:name=".activities.login.LoginActivity" />
+        <activity android:name=".activities.home.HomeListActivity" />
+        <activity android:name=".activities.splash.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-        <activity android:name=".activities.splash.SplashActivity" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
