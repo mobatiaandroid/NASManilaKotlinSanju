@@ -31,4 +31,12 @@ class LoginActivity : AppCompatActivity() {
         initialiseUI()
         setListeners()
     }
+
+    private fun setListeners() {
+        TODO("Not yet implemented")
+    }
+
+    private fun initialiseUI() {
+        TODO("Not yet implemented")
+    }
 }

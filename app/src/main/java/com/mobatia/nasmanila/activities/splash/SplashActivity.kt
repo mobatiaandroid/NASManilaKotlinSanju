@@ -66,7 +66,7 @@ class SplashActivity : AppCompatActivity() {
                 if (responseData != null) {
                     val jsonObject = JSONObject(responseData.string())
                     if (jsonObject != null) {
-                        val accessToken: String = jsonObject.optString("access_token")
+                        val accessToken: String = jsonObject.optString("authorization-user")
                         PreferenceManager.setAccessToken(context, accessToken)
                     }
                 }
