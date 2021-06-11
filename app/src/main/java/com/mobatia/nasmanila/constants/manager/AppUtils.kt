@@ -11,9 +11,37 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import com.mobatia.nasmanila.R
+import com.mobatia.nasmanila.api.ApiClient
+import okhttp3.ResponseBody
+import org.json.JSONObject
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class AppUtils {
     companion object {
+        fun getAccessToken(context: Context) {
+            val call: Call<ResponseBody> = ApiClient.getApiService().accessToken(
+                PreferenceManager.getUserCode(context)!!
+            )
+            call.enqueue(object : Callback<ResponseBody> {
+                override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                    val responseData =  response.body()
+                    if (responseData != null) {
+                        val jsonObject = JSONObject(responseData.string())
+                        if (jsonObject != null) {
+                            val accessToken: String = jsonObject.optString("authorization-user")
+                            PreferenceManager.setAccessToken(context, accessToken)
+                        }
+                    }
+                }
+
+                override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                    TODO("Not yet implemented")
+                }
+
+            })
+        }
         fun showDialogAlertDismiss(
             context: Context?,
             msgHead: String?,

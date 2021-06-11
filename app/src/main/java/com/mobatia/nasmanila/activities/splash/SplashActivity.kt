@@ -26,11 +26,10 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
         context = this
         if (AppUtils.checkInternet(context)) {
-            getAccessToken(context)
+
             Handler().postDelayed({
-                if (PreferenceManager.getIsFirstLaunch(context as SplashActivity) && PreferenceManager.getUserCode(
-                        context as SplashActivity
-                    ) == ""
+                if (PreferenceManager.getIsFirstLaunch(context as SplashActivity) &&
+                    PreferenceManager.getUserCode(context as SplashActivity)!!.isEmpty()
                 ) {
                     var tutorialIntent: Intent = Intent(context, TutorialActivity::class.java)
                     tutorialIntent.putExtra("type", 1)
@@ -41,6 +40,7 @@ class SplashActivity : AppCompatActivity() {
                     startActivity(loginIntent)
                     finish()
                 } else {
+                    AppUtils.getAccessToken(context)
                     var homeIntent: Intent = Intent(context, HomeListActivity::class.java)
                     startActivity(homeIntent)
                     finish()
@@ -56,26 +56,5 @@ class SplashActivity : AppCompatActivity() {
         }
     }
 
-    private fun getAccessToken(context: Context) {
-        val call: Call<ResponseBody> = ApiClient.getApiService().accessToken(
-            PreferenceManager.getUserCode(context)!!
-        )
-        call.enqueue(object : Callback<ResponseBody> {
-            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-                val responseData =  response.body()
-                if (responseData != null) {
-                    val jsonObject = JSONObject(responseData.string())
-                    if (jsonObject != null) {
-                        val accessToken: String = jsonObject.optString("authorization-user")
-                        PreferenceManager.setAccessToken(context, accessToken)
-                    }
-                }
-            }
 
-            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                TODO("Not yet implemented")
-            }
-
-        })
-    }
 }
