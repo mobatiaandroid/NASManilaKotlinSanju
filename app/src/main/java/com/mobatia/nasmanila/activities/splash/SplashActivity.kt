@@ -22,14 +22,14 @@ class SplashActivity : AppCompatActivity() {
         if (AppUtils.checkInternet(context)) {
 
             Handler().postDelayed({
-                if (PreferenceManager.getIsFirstLaunch(context) &&
+                /*if (PreferenceManager.getIsFirstLaunch(context) &&
                     PreferenceManager.getUserCode(context as SplashActivity)!!.isEmpty()
                 ) {
                     var tutorialIntent: Intent = Intent(context, TutorialActivity::class.java)
                     tutorialIntent.putExtra("type", 1)
                     startActivity(tutorialIntent)
                     finish()
-                } else if (PreferenceManager.getUserCode(context)!!.isEmpty()) {
+                } else*/ if (PreferenceManager.getUserCode(context)!!.isEmpty()) {
                     var loginIntent: Intent = Intent(context, LoginActivity::class.java)
                     startActivity(loginIntent)
                     finish()
