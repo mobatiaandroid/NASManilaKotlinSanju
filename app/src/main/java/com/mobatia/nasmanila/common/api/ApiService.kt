@@ -12,6 +12,26 @@ interface ApiService {
     fun accessToken(
         @Field("authorization-user") user_code: String
     ): Call<ResponseBody>
+
+    @FormUrlEncoded
+    @POST("api/v1/forgot_password")
+    fun forgotPassword(
+        @Field("email") email: String
+    ): Call<ResponseBody>
+
+    @FormUrlEncoded
+    @POST("")
+    fun signUp(): Call<ResponseBody>
+
+    @FormUrlEncoded
+    @POST("api/v1/login")
+    fun loginCall(
+        @Field("email")email: String,
+        @Field("password")password: String,
+        @Field("devicetype")deviceType: String,
+        @Field("fcm_id")fcmID: String,
+        @Field("deviceid")deviceID: String?
+    ): Call<ResponseBody>
 //    @FormUrlEncoded
 //    @POST("api/parent_signup")
 //    fun signUp(

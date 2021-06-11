@@ -1,4 +1,4 @@
-package com.mobatia.nasmanila.constants.manager
+package com.mobatia.nasmanila.common.common_classes
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -41,6 +41,14 @@ class PreferenceManager {
                 context!!.getSharedPreferences(sharedPrefNas, Context.MODE_PRIVATE)
             tokenValue = sharedPreferences.getString("access_token", "").toString()
             return tokenValue
+        }
+
+        fun setUserID(context: Context, userID: String) {
+            val sharedPreferences: SharedPreferences =
+                context!!.getSharedPreferences(sharedPrefNas, Context.MODE_PRIVATE)
+            val editor: SharedPreferences.Editor = sharedPreferences.edit()
+            editor.putString("userId", userID)
+            editor.apply()
         }
 
 

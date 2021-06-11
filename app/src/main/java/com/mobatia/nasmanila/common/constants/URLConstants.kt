@@ -1,4 +1,4 @@
-package com.mobatia.nasmanila.constants
+package com.mobatia.nasmanila.common.constants
 
 class URLConstants {
     companion object{

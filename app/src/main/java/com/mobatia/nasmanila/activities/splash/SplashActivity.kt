@@ -9,14 +9,8 @@ import com.mobatia.nasmanila.R
 import com.mobatia.nasmanila.activities.home.HomeListActivity
 import com.mobatia.nasmanila.activities.login.LoginActivity
 import com.mobatia.nasmanila.activities.tutorial.TutorialActivity
-import com.mobatia.nasmanila.api.ApiClient
-import com.mobatia.nasmanila.constants.manager.AppUtils
-import com.mobatia.nasmanila.constants.manager.PreferenceManager
-import okhttp3.ResponseBody
-import org.json.JSONObject
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.mobatia.nasmanila.common.common_classes.AppUtils
+import com.mobatia.nasmanila.common.common_classes.PreferenceManager
 
 
 class SplashActivity : AppCompatActivity() {
