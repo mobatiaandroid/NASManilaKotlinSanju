@@ -11,6 +11,8 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
+import android.provider.Settings.Secure
+import android.provider.Settings.Secure.*
 import android.view.View
 import android.view.Window
 import android.widget.Button
@@ -148,7 +150,7 @@ class LoginActivity : AppCompatActivity() {
         guestUserButton.setOnClickListener {
             AppUtils.hideKeyboard(context)
             PreferenceManager.setUserID(context, "")
-            var homeIntent: Intent = Intent(context, HomeListActivity::class.java)
+            val homeIntent = Intent(context, HomeListActivity::class.java)
             startActivity(homeIntent)
         }
         signUpBtn.setOnClickListener {
@@ -163,8 +165,8 @@ class LoginActivity : AppCompatActivity() {
                 )
         }
         helpButton.setOnClickListener { v ->
-            var emailIntent: Intent = Intent(Intent.ACTION_SEND)
-            var deliveryAddress = "appsupport@naismanila.edu.ph"
+            var emailIntent = Intent(Intent.ACTION_SEND)
+            val deliveryAddress = "appsupport@naismanila.edu.ph"
     //            emailIntent.putExtra(Intent.EXTRA_EMAIL, Uri.parse(deliveryAddress))
     //            emailIntent.data = Uri.parse("mailto:")
     //            emailIntent.type = "text/plain"
@@ -210,7 +212,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun forgotPasswordApiCall() {
-        val dialog: Dialog = Dialog(context!!, R.style.NewDialog)
+        val dialog = Dialog(context!!, R.style.NewDialog)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.setContentView(R.layout.dialog_forgot_password)
         dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
@@ -488,10 +490,12 @@ class LoginActivity : AppCompatActivity() {
 //        })
     }
 
+    @SuppressLint("HardwareIds")
     private fun loginApiCall() {
-        var androidID = Settings.Secure.getString(
+        val androidID = getString(
             this.contentResolver,
-            Settings.Secure.ANDROID_ID)
+            ANDROID_ID
+        )
         val call: Call<ResponseBody> = ApiClient.getApiService().loginCall(
             userNameEdtTxt!!.text.toString(),
             passwordEdtTxt!!.text.toString(),
@@ -505,7 +509,7 @@ class LoginActivity : AppCompatActivity() {
                 if (responseData != null) {
                     val jsonObject = JSONObject(responseData.string())
                     if (jsonObject.has("status")) {
-                        var status = jsonObject.optInt("status")
+                        val status = jsonObject.optInt("status")
                         if (status == 100) {
                             val responseArray: JSONObject = jsonObject.optJSONObject("responseArray")
                             val userCode = responseArray.optString("user_code")
