@@ -11,7 +11,6 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
-import android.util.Log
 import android.view.View
 import android.view.Window
 import android.widget.Button
@@ -25,87 +24,86 @@ import com.mobatia.nasmanila.api.ApiClient
 import com.mobatia.nasmanila.common.common_classes.AppUtils
 import com.mobatia.nasmanila.common.common_classes.PreferenceManager
 import okhttp3.ResponseBody
-import org.json.JSONException
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class LoginActivity : AppCompatActivity() {
-    lateinit var mContext: Context
-    lateinit var mUserNameEdtTxt: EditText
-    lateinit var mPasswordEdtTxt: EditText
-    lateinit var mNeedpasswordBtn: Button
-    lateinit var mGuestUserButton: Button
-    lateinit var mLoginBtn: Button
-    lateinit var mSignUpBtn: Button
-    lateinit var mMailEdtText: EditText
-    lateinit var mHelpButton: Button
-    lateinit var mProgressBar: ProgressBar
+    lateinit var context: Context
+    lateinit var userNameEdtTxt: EditText
+    lateinit var passwordEdtTxt: EditText
+    lateinit var needPasswordBtn: Button
+    lateinit var guestUserButton: Button
+    lateinit var loginBtn: Button
+    lateinit var signUpBtn: Button
+    lateinit var mailEdtText: EditText
+    lateinit var helpButton: Button
+    lateinit var progressBar: ProgressBar
     lateinit var dialog: Dialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        mContext = this
-        PreferenceManager.setIsFirstLaunch(mContext as LoginActivity, false)
+        context = this
+        PreferenceManager.setIsFirstLaunch(context as LoginActivity, false)
         initialiseUI()
         setListeners()
     }
 
     private fun initialiseUI() {
-        mProgressBar = (findViewById<View>(R.id.progressBar) as ProgressBar?)!!
-        mUserNameEdtTxt = findViewById<View>(R.id.userEditText) as EditText
-        dialog = Dialog(mContext, R.style.NewDialog)
-        mProgressBar = findViewById(R.id.progressBar)
-        mUserNameEdtTxt.setOnEditorActionListener { v, actionId, event ->
-            mUserNameEdtTxt.isFocusable = false
-            mUserNameEdtTxt.isFocusableInTouchMode = false
+        progressBar = (findViewById<View>(R.id.progressBar) as ProgressBar?)!!
+        userNameEdtTxt = findViewById<View>(R.id.userEditText) as EditText
+        dialog = Dialog(context, R.style.NewDialog)
+        progressBar = findViewById(R.id.progressBar)
+        userNameEdtTxt.setOnEditorActionListener { v, actionId, event ->
+            userNameEdtTxt.isFocusable = false
+            userNameEdtTxt.isFocusableInTouchMode = false
             false
         }
-        mPasswordEdtTxt = findViewById<View>(R.id.passwordEditText) as EditText
-        mPasswordEdtTxt.setOnEditorActionListener { v, actionId, event ->
-            mPasswordEdtTxt.isFocusable = false
-            mPasswordEdtTxt.isFocusableInTouchMode = false
+        passwordEdtTxt = findViewById<View>(R.id.passwordEditText) as EditText
+        passwordEdtTxt.setOnEditorActionListener { v, actionId, event ->
+            passwordEdtTxt.isFocusable = false
+            passwordEdtTxt.isFocusableInTouchMode = false
             false
         }
-        mHelpButton = findViewById<View>(R.id.helpButton) as Button
-        mNeedpasswordBtn = findViewById<View>(R.id.forgotPasswordButton) as Button
-        mGuestUserButton = findViewById<View>(R.id.guestButton) as Button
-        mLoginBtn = findViewById<View>(R.id.loginBtn) as Button
-        mSignUpBtn = findViewById<View>(R.id.signUpButton) as Button
+        helpButton = findViewById<View>(R.id.helpButton) as Button
+        needPasswordBtn = findViewById<View>(R.id.forgotPasswordButton) as Button
+        guestUserButton = findViewById<View>(R.id.guestButton) as Button
+        loginBtn = findViewById<View>(R.id.loginBtn) as Button
+        signUpBtn = findViewById<View>(R.id.signUpButton) as Button
 
-        mNeedpasswordBtn.setBackgroundDrawable(
+        needPasswordBtn.setBackgroundDrawable(
             AppUtils.getButtonDrawableByScreenCategory(
-                mContext,
+                context,
                 R.drawable.forgotpassword,
                 R.drawable.forgotpasswordpress
             )
         )
-        mGuestUserButton.setBackgroundDrawable(
+        guestUserButton.setBackgroundDrawable(
             AppUtils.getButtonDrawableByScreenCategory(
-                mContext,
+                context,
                 R.drawable.guest,
                 R.drawable.guestpress
             )
         )
-        mLoginBtn.setBackgroundDrawable(
+        loginBtn.setBackgroundDrawable(
             AppUtils.getButtonDrawableByScreenCategory(
-                mContext,
+                context,
                 R.drawable.login,
                 R.drawable.loginpress
             )
         )
-        mSignUpBtn.setBackgroundDrawable(
+        signUpBtn.setBackgroundDrawable(
             AppUtils.getButtonDrawableByScreenCategory(
-                mContext,
+                context,
                 R.drawable.signup_new,
                 R.drawable.signuppress_new
             )
         )
-        mHelpButton.setBackgroundDrawable(
+        helpButton.setBackgroundDrawable(
             AppUtils.getButtonDrawableByScreenCategory(
-                mContext,
+                context,
                 R.drawable.help,
                 R.drawable.helppress
             )
@@ -114,57 +112,57 @@ class LoginActivity : AppCompatActivity() {
 
     @SuppressLint("ClickableViewAccessibility")
     private fun setListeners() {
-        mUserNameEdtTxt.setOnTouchListener { v, event ->
-            mUserNameEdtTxt.isFocusable = true
-            mUserNameEdtTxt.isFocusableInTouchMode = true
+        userNameEdtTxt.setOnTouchListener { v, event ->
+            userNameEdtTxt.isFocusable = true
+            userNameEdtTxt.isFocusableInTouchMode = true
             false
         }
-        mPasswordEdtTxt.setOnTouchListener { v, event ->
-            mPasswordEdtTxt.isFocusable = true
-            mPasswordEdtTxt.isFocusableInTouchMode = true
+        passwordEdtTxt.setOnTouchListener { v, event ->
+            passwordEdtTxt.isFocusable = true
+            passwordEdtTxt.isFocusableInTouchMode = true
             false
         }
-        mLoginBtn.setOnClickListener {
-            AppUtils.hideKeyboard(mContext)
-            if (mUserNameEdtTxt.text.toString().trim().equals("", ignoreCase = true))
+        loginBtn.setOnClickListener {
+            AppUtils.hideKeyboard(context)
+            if (userNameEdtTxt.text.toString().trim().equals("", ignoreCase = true))
                 AppUtils.showDialogAlertDismiss(
-                    mContext as Activity?, getString(R.string.alert_heading), getString(
+                    context as Activity?, getString(R.string.alert_heading), getString(
                         R.string.enter_email
                     ), R.drawable.exclamationicon, R.drawable.round
                 )
-            else if (!AppUtils.isValidEmail(mUserNameEdtTxt?.text.toString()))
+            else if (!AppUtils.isValidEmail(userNameEdtTxt?.text.toString()))
                 AppUtils.showDialogAlertDismiss(
-                    mContext as Activity?, getString(R.string.alert_heading), getString(
+                    context as Activity?, getString(R.string.alert_heading), getString(
                         R.string.enter_valid_email
                     ), R.drawable.exclamationicon, R.drawable.round
                 )
-            else if (mPasswordEdtTxt.text.toString().equals("", ignoreCase = true))
+            else if (passwordEdtTxt.text.toString().equals("", ignoreCase = true))
                 AppUtils.showDialogAlertDismiss(
-                    mContext as Activity?, getString(R.string.alert_heading), getString(
+                    context as Activity?, getString(R.string.alert_heading), getString(
                         R.string.enter_password
                     ), R.drawable.exclamationicon, R.drawable.round
                 )
             else
                 loginApiCall()
         }
-        mGuestUserButton.setOnClickListener {
-            AppUtils.hideKeyboard(mContext)
-            PreferenceManager.setUserID(mContext, "")
-            var homeIntent: Intent = Intent(mContext, HomeListActivity::class.java)
+        guestUserButton.setOnClickListener {
+            AppUtils.hideKeyboard(context)
+            PreferenceManager.setUserID(context, "")
+            var homeIntent: Intent = Intent(context, HomeListActivity::class.java)
             startActivity(homeIntent)
         }
-        mSignUpBtn.setOnClickListener {
-            AppUtils.hideKeyboard(mContext)
-            if (mContext?.let { AppUtils.checkInternet(it) })
+        signUpBtn.setOnClickListener {
+            AppUtils.hideKeyboard(context)
+            if (context?.let { AppUtils.checkInternet(it) })
                 showSignUpAlertDialog()
             else
                 AppUtils.showDialogAlertDismiss(
-                    mContext as Activity?, "Network Error", getString(
+                    context as Activity?, "Network Error", getString(
                         R.string.no_internet
                     ), R.drawable.nonetworkicon, R.drawable.roundred
                 )
         }
-        mHelpButton.setOnClickListener { v ->
+        helpButton.setOnClickListener { v ->
             var emailIntent: Intent = Intent(Intent.ACTION_SEND)
             var deliveryAddress = "appsupport@naismanila.edu.ph"
     //            emailIntent.putExtra(Intent.EXTRA_EMAIL, Uri.parse(deliveryAddress))
@@ -198,13 +196,13 @@ class LoginActivity : AppCompatActivity() {
     //                }
     //            }
         }
-        mNeedpasswordBtn.setOnClickListener {
-            AppUtils.hideKeyboard(mContext)
-            if (mContext.let { AppUtils.checkInternet(it) })
+        needPasswordBtn.setOnClickListener {
+            AppUtils.hideKeyboard(context)
+            if (context.let { AppUtils.checkInternet(it) })
                 forgotPasswordApiCall()
             else
                 AppUtils.showDialogAlertDismiss(
-                    mContext as Context, "Network Error", getString(
+                    context as Context, "Network Error", getString(
                         R.string.no_internet
                     ), R.drawable.nonetworkicon, R.drawable.roundred
                 )
@@ -212,44 +210,44 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun forgotPasswordApiCall() {
-        val dialog: Dialog = Dialog(mContext!!, R.style.NewDialog)
+        val dialog: Dialog = Dialog(context!!, R.style.NewDialog)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.setContentView(R.layout.dialog_forgot_password)
         dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.setCancelable(false)
-        mMailEdtText = dialog.findViewById<View>(R.id.text_dialog) as EditText
+        mailEdtText = dialog.findViewById<View>(R.id.text_dialog) as EditText
 //        mMailEdtText!!.setOnTouchListener(this)
         val alertHead = dialog.findViewById<View>(R.id.alertHead) as TextView
         val dialogSubmitButton = dialog.findViewById<View>(R.id.btn_signup) as Button
         dialogSubmitButton.setOnClickListener {
-            AppUtils.hideKeyboard(mContext)
-            if (!mMailEdtText!!.text.toString().trim { it <= ' ' }.equals("", ignoreCase = true)) {
-                if (AppUtils.isValidEmail(mMailEdtText!!.text.toString())) {
-                    if (AppUtils.checkInternet(mContext!!))
+            AppUtils.hideKeyboard(context)
+            if (!mailEdtText!!.text.toString().trim { it <= ' ' }.equals("", ignoreCase = true)) {
+                if (AppUtils.isValidEmail(mailEdtText!!.text.toString())) {
+                    if (AppUtils.checkInternet(context!!))
                         sendForgotPassword()
                     else
                         AppUtils.showDialogAlertDismiss(
-                            mContext as Activity?, "Network Error", getString(
+                            context as Activity?, "Network Error", getString(
                                 R.string.no_internet
                             ), R.drawable.nonetworkicon, R.drawable.roundred
                         )
                     dialog.dismiss()
                 } else
                     AppUtils.showDialogAlertDismiss(
-                        mContext as Activity?, getString(R.string.alert_heading), getString(
+                        context as Activity?, getString(R.string.alert_heading), getString(
                             R.string.invalid_email
                         ), R.drawable.exclamationicon, R.drawable.round
                     )
             } else
                 AppUtils.showDialogAlertDismiss(
-                    mContext as Activity?, getString(R.string.alert_heading), getString(
+                    context as Activity?, getString(R.string.alert_heading), getString(
                         R.string.enter_email
                     ), R.drawable.exclamationicon, R.drawable.round
                 )
         }
         val cancelButton = dialog.findViewById<View>(R.id.button2) as Button
         cancelButton.setOnClickListener {
-            AppUtils.hideKeyboard(mContext)
+            AppUtils.hideKeyboard(context)
             dialog.dismiss()
         }
         dialog.show()
@@ -257,7 +255,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun sendForgotPassword() {
         val call: Call<ResponseBody> = ApiClient.getApiService().forgotPassword(
-            mMailEdtText.text.toString()
+            mailEdtText.text.toString()
         )
 
         call.enqueue(object : Callback<ResponseBody> {
@@ -271,19 +269,19 @@ class LoginActivity : AppCompatActivity() {
 
                         if (status == 100) {
                             AppUtils.showDialogAlertDismiss(
-                                mContext as Activity?, "Success", getString(
+                                context as Activity?, "Success", getString(
                                     R.string.frgot_success_alert
                                 ), R.drawable.tick, R.drawable.round
                             )
                         } else if (status == 114) {
                             AppUtils.showDialogAlertDismiss(
-                                mContext as Activity?, "Success",
+                                context as Activity?, "Success",
                                 "User not found in our database"
                                     , R.drawable.tick, R.drawable.round
                             )
                         } else {
                             AppUtils.showDialogAlertDismiss(
-                                mContext as Activity?, "Alert", mContext!!.getString(
+                                context as Activity?, "Alert", context!!.getString(
                                     R.string.common_error
                                 ), R.drawable.exclamationicon, R.drawable.round
                             )
@@ -369,30 +367,30 @@ class LoginActivity : AppCompatActivity() {
         dialog.setContentView(R.layout.dialog_layout_signup)
         dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.setCancelable(false)
-        mMailEdtText = dialog.findViewById<View>(R.id.text_dialog) as EditText
+        mailEdtText = dialog.findViewById<View>(R.id.text_dialog) as EditText
         val dialogSubmitButton = dialog.findViewById<View>(R.id.btn_signup) as Button
         dialogSubmitButton.setOnClickListener {
-            AppUtils.hideKeyboard(mContext)
-            if (!mMailEdtText!!.text.toString().trim { it <= ' ' }.equals("", ignoreCase = true)) {
-                if (AppUtils.isValidEmail(mMailEdtText!!.text.toString())) {
-                    if (AppUtils.checkInternet(mContext!!))
+            AppUtils.hideKeyboard(context)
+            if (!mailEdtText!!.text.toString().trim { it <= ' ' }.equals("", ignoreCase = true)) {
+                if (AppUtils.isValidEmail(mailEdtText!!.text.toString())) {
+                    if (AppUtils.checkInternet(context!!))
                         sendSignUpRequest()
                     else
                         AppUtils.showDialogAlertDismiss(
-                            mContext as Activity?, "Network Error", getString(
+                            context as Activity?, "Network Error", getString(
                                 R.string.no_internet
                             ), R.drawable.nonetworkicon, R.drawable.roundred
                         )
                 }
                 else
                     AppUtils.showDialogAlertDismiss(
-                        mContext as Activity?, getString(R.string.alert_heading), getString(
+                        context as Activity?, getString(R.string.alert_heading), getString(
                             R.string.enter_valid_email
                         ), R.drawable.exclamationicon, R.drawable.round
                     )
             } else {
                 AppUtils.showDialogAlertDismiss(
-                    mContext as Activity?, getString(R.string.alert_heading), getString(
+                    context as Activity?, getString(R.string.alert_heading), getString(
                         R.string.enter_email
                     ), R.drawable.exclamationicon, R.drawable.round
                 )
@@ -401,7 +399,7 @@ class LoginActivity : AppCompatActivity() {
 
         val maybeLaterButton = dialog.findViewById<View>(R.id.button2) as Button
         maybeLaterButton.setOnClickListener {
-            AppUtils.hideKeyboard(mContext)
+            AppUtils.hideKeyboard(context)
             dialog.dismiss()
         }
         dialog.show()
@@ -495,8 +493,8 @@ class LoginActivity : AppCompatActivity() {
             this.contentResolver,
             Settings.Secure.ANDROID_ID)
         val call: Call<ResponseBody> = ApiClient.getApiService().loginCall(
-            mUserNameEdtTxt!!.text.toString(),
-            mPasswordEdtTxt!!.text.toString(),
+            userNameEdtTxt!!.text.toString(),
+            passwordEdtTxt!!.text.toString(),
             "2",
             FirebaseInstanceId.getInstance().id,
             androidID
@@ -512,24 +510,24 @@ class LoginActivity : AppCompatActivity() {
                             val responseArray: JSONObject = jsonObject.optJSONObject("responseArray")
                             val userCode = responseArray.optString("user_code")
                             val token = responseArray.optString("token")
-                            PreferenceManager.setUserID(mContext, userCode)
-                            PreferenceManager.setAccessToken(mContext, token)
+                            PreferenceManager.setUserID(context, userCode)
+                            PreferenceManager.setAccessToken(context, token)
                         } else if (status == 110) {
-                            AppUtils.showDialogAlertDismiss(mContext as Activity?,
+                            AppUtils.showDialogAlertDismiss(context as Activity?,
                                 getString(R.string.error_heading),
                                 "Incorrect Username or Password",
                                 R.drawable.exclamationicon,
                                 R.drawable.round)
                         } else if (status == 103) {
-                            AppUtils.showDialogAlertDismiss(mContext as Activity?,
+                            AppUtils.showDialogAlertDismiss(context as Activity?,
                                 getString(R.string.error_heading),
                                 "Validation Error",
                                 R.drawable.exclamationicon,
                                 R.drawable.round)
                         } else {
-                            AppUtils.showDialogAlertDismiss(mContext as Activity?,
+                            AppUtils.showDialogAlertDismiss(context as Activity?,
                                 "Alert",
-                                mContext!!.getString(R.string.common_error),
+                                context!!.getString(R.string.common_error),
                                 R.drawable.exclamationicon,
                                 R.drawable.round)
                         }

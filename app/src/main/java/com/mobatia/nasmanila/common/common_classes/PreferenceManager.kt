@@ -22,7 +22,7 @@ class PreferenceManager {
             editor.putBoolean("is_first_launch", result)
             editor.apply()
         }
-        fun getIsFirstLaunch(context: SplashActivity): Boolean {
+        fun getIsFirstLaunch(context: Context): Boolean {
             val sharedPreferences: SharedPreferences =
                 context.getSharedPreferences(sharedPrefNas, Context.MODE_PRIVATE)
             return sharedPreferences.getBoolean("is_first_launch", true)
