@@ -1,6 +1,6 @@
 package com.mobatia.nasmanila.common.constants
 
-class NASTabConstants {
+class NaisTabConstants {
     companion object {
 
         var TAB_CALENDAR = "1"

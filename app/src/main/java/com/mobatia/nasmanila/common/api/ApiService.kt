@@ -32,6 +32,17 @@ interface ApiService {
         @Field("fcm_id")fcmID: String,
         @Field("deviceid")deviceID: String?
     ): Call<ResponseBody>
+
+    @FormUrlEncoded
+    @POST("api/v1/notification/list")
+    fun pushNotificationsCall(
+        @Field("start") start: Int,
+        @Field("limit") limit: Int
+    ): Call<ResponseBody>
+
+    @FormUrlEncoded
+    @POST("api/v1/banner_images")
+    fun getBannerImages(): Call<ResponseBody>
 //    @FormUrlEncoded
 //    @POST("api/parent_signup")
 //    fun signUp(

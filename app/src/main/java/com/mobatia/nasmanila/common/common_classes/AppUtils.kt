@@ -110,5 +110,9 @@ class AppUtils {
             return return Patterns.EMAIL_ADDRESS.matcher(string).matches()
         }
 
+        fun replace(s: String): String {
+            return s.replace(" ".toRegex(), "%20")
+        }
+
     }
 }
