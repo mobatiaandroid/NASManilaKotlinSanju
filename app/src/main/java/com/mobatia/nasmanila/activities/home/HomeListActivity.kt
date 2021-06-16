@@ -1,5 +1,6 @@
 package com.mobatia.nasmanila.activities.home
 
+import HomeScreenRegisteredUserFragment
 import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -36,7 +37,6 @@ import com.mobatia.nasmanila.fragments.calendar.CalendarWebViewFragment
 import com.mobatia.nasmanila.fragments.category_main.CategoryMainFragment
 import com.mobatia.nasmanila.fragments.contact_us.ContactUsFragment
 import com.mobatia.nasmanila.fragments.home.HomeScreenGuestUserFragment
-import com.mobatia.nasmanila.fragments.home.HomeScreenRegisteredUserFragment
 import com.mobatia.nasmanila.fragments.notifications.NotificationsFragment
 import com.mobatia.nasmanila.fragments.parent_essentials.ParentEssentialsFragment
 import com.mobatia.nasmanila.fragments.parents_meeting.ParentsMeetingFragment
