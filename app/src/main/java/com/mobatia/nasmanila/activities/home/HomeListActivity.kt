@@ -24,7 +24,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ActivityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
-import androidx.legacy.app.ActionBarDrawerToggle
+import androidx.appcompat.app.ActionBarDrawerToggle
 import com.mobatia.nasmanila.R
 import com.mobatia.nasmanila.activities.home.adapter.HomeListAdapter
 import com.mobatia.nasmanila.common.common_classes.PreferenceManager
@@ -46,7 +46,7 @@ import com.mobatia.nasmanila.fragments.social_media.SocialMediaFragment
 class HomeListActivity : AppCompatActivity() {
     lateinit var linearLayout: LinearLayout
     lateinit var homeListView: ListView
-//    lateinit var studentsArrayList: ArrayList<StudentModel>
+    //    lateinit var studentsArrayList: ArrayList<StudentModel>
     lateinit var listAdapter: HomeListAdapter
     lateinit var context: Context
     lateinit var activity: Activity
@@ -62,7 +62,7 @@ class HomeListActivity : AppCompatActivity() {
     lateinit var extras: Bundle
     lateinit var drawerButton: ImageView
     lateinit var settingsButton: ImageView
-    var drawerToggle: ActionBarDrawerToggle? = null
+    lateinit var drawerToggle: ActionBarDrawerToggle
 
     private val PERMISSION_CALLBACK_CONSTANT_LOCATION = 3
     private val REQUEST_PERMISSION_LOCATION = 103
@@ -729,7 +729,6 @@ class HomeListActivity : AppCompatActivity() {
         drawerToggle = object : ActionBarDrawerToggle(
             context as Activity?,
             drawerLayout,
-            R.drawable.hamburgerbtn,
             R.string.null_value,
             R.string.null_value
         )

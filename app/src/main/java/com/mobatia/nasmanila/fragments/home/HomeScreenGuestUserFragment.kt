@@ -23,11 +23,11 @@ private const val ARG_PARAM2 = "param2"
  */
 class HomeScreenGuestUserFragment(
     s: String,
-    mDrawerLayout: DrawerLayout,
-    mHomeListView: ListView,
+    drawerLayout: DrawerLayout,
+    homeListView: ListView,
     linearLayout: LinearLayout,
-    mListItemArray: Array<String>,
-    mListImgArray: TypedArray
+    listItemArray: Array<String>,
+    listImgArray: TypedArray
 ) : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null

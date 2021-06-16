@@ -497,8 +497,8 @@ class LoginActivity : AppCompatActivity() {
             ANDROID_ID
         )
         val call: Call<ResponseBody> = ApiClient.getApiService().loginCall(
-            userNameEdtTxt.text.toString(),
-            passwordEdtTxt.text.toString(),
+            userNameEdtTxt!!.text.toString(),
+            passwordEdtTxt!!.text.toString(),
             "2",
             FirebaseInstanceId.getInstance().id,
             androidID

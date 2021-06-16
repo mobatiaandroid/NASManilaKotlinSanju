@@ -14,7 +14,8 @@
         android:layout_centerVertical="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_alignParentLeft="true" />
 
     <com.mobatia.nasmanila.customviews.customtext.CustomFontSansProTextWhiteSemiBold
         android:id="@+id/listTxtView"
@@ -27,6 +28,7 @@
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/listImg"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_toRightOf="@+id/listImg" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
