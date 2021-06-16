@@ -19,6 +19,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.mobatia.nasmanila.R
+import com.mobatia.nasmanila.activities.notification.AudioAlertActivity
+import com.mobatia.nasmanila.activities.notification.ImageAlertActivity
+import com.mobatia.nasmanila.activities.notification.TextAlertActivity
+import com.mobatia.nasmanila.activities.notification.VideoAlertActivity
 import com.mobatia.nasmanila.api.ApiClient
 import com.mobatia.nasmanila.common.common_classes.AppUtils
 import com.mobatia.nasmanila.common.constants.NaisClassNameConstants
@@ -26,6 +30,8 @@ import com.mobatia.nasmanila.fragments.notifications.adapter.PushNotificationLis
 import com.mobatia.nasmanila.fragments.notifications.model.PushNotificationModel
 import com.mobatia.nasmanila.manager.recyclermanager.DividerItemDecoration
 import com.mobatia.nasmanila.manager.recyclermanager.ItemOffsetDecoration
+import com.mobatia.nasmanila.manager.recyclermanager.OnItemClickListener
+import com.mobatia.nasmanila.manager.recyclermanager.addOnItemClickListener
 import me.leolin.shortcutbadger.ShortcutBadger
 import okhttp3.ResponseBody
 import org.json.JSONArray
@@ -206,6 +212,86 @@ class NotificationsFragment(tabTitle: String, tabId: String) : Fragment() {
 
             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                 progressBar!!.visibility = View.GONE
+            }
+
+        })
+        notificationRecycler!!.addOnItemClickListener(object : OnItemClickListener {
+            override fun onItemClicked(position: Int, view: View) {
+
+                if (pushNotificationArrayList!![position].pushType.equals(
+                        "",
+                        ignoreCase = true
+                    )
+                ) {
+                    mIntent = Intent(context, TextAlertActivity::class.java)
+                    mIntent!!.putExtra("position", position)
+                    mIntent!!.putExtra("PushID", pushNotificationArrayList!![position].id)
+                    mIntent!!.putExtra("Day", pushNotificationArrayList!![position].day)
+                    mIntent!!.putExtra(
+                        "Month",
+                        pushNotificationArrayList!![position].monthString
+                    )
+                    mIntent!!.putExtra("Year", pushNotificationArrayList!![position].year)
+                    mIntent!!.putExtra(
+                        "PushDate",
+                        pushNotificationArrayList!![position].pushTime
+                    )
+                    context!!.startActivity(mIntent)
+                }
+                if (pushNotificationArrayList!![position].pushType.equals("Image", ignoreCase = true) || pushNotificationArrayList!![position].pushType.equals("Text", ignoreCase = true)) {
+                    mIntent = Intent(context, ImageAlertActivity::class.java)
+                    mIntent!!.putExtra("PushID", pushNotificationArrayList!![position].id)
+                    mIntent!!.putExtra("Day", pushNotificationArrayList!![position].day)
+                    mIntent!!.putExtra(
+                        "Month",
+                        pushNotificationArrayList!![position].monthString
+                    )
+                    mIntent!!.putExtra("Year", pushNotificationArrayList!![position].year)
+                    mIntent!!.putExtra(
+                        "PushDate",
+                        pushNotificationArrayList!![position].pushTime
+                    )
+                    println("pushID" + pushNotificationArrayList!![position].id)
+                    context!!.startActivity(mIntent)
+                }
+                if (pushNotificationArrayList!![position].pushType.equals(
+                        "Voice",
+                        ignoreCase = true
+                    )
+                ) {
+                    mIntent = Intent(context, AudioAlertActivity::class.java)
+                    mIntent!!.putExtra("PushID", pushNotificationArrayList!![position].id)
+                    mIntent!!.putExtra("Day", pushNotificationArrayList!![position].day)
+                    mIntent!!.putExtra(
+                        "Month",
+                        pushNotificationArrayList!![position].monthString
+                    )
+                    mIntent!!.putExtra("Year", pushNotificationArrayList!![position].year)
+                    mIntent!!.putExtra(
+                        "PushDate",
+                        pushNotificationArrayList!![position].pushTime
+                    )
+                    context!!.startActivity(mIntent)
+                }
+                if (pushNotificationArrayList!![position].pushType.equals(
+                        "Video",
+                        ignoreCase = true
+                    )
+                ) {
+                    mIntent = Intent(context, VideoAlertActivity::class.java)
+                    mIntent!!.putExtra("PushID", pushNotificationArrayList!![position].id)
+                    mIntent!!.putExtra("Day", pushNotificationArrayList!![position].day)
+                    mIntent!!.putExtra(
+                        "Month",
+                        pushNotificationArrayList!![position].monthString
+                    )
+                    mIntent!!.putExtra("Year", pushNotificationArrayList!![position].year)
+                    mIntent!!.putExtra(
+                        "PushDate",
+                        pushNotificationArrayList!![position].pushTime
+                    )
+                    context!!.startActivity(mIntent)
+                }
             }
 
         })
