@@ -1,4 +1,4 @@
-package com.mobatia.nasmanila.customviews.customtext
+package com.mobatia.nasmanila.custom_views.custom_text
 
 import android.content.Context
 import android.graphics.Typeface

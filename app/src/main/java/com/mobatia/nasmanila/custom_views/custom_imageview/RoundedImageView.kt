@@ -1,4 +1,4 @@
-package com.mobatia.nasmanila.customviews.custom_imageview
+package com.mobatia.nasmanila.custom_views.custom_imageview
 
 import android.content.Context
 import android.graphics.*

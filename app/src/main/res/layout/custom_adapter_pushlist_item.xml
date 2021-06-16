@@ -18,7 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.mobatia.nasmanila.customviews.customtext.CustomFontSansProTextBlack
+    <com.mobatia.nasmanila.custom_views.custom_text.CustomFontSansProTextBlack
         android:id="@+id/title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

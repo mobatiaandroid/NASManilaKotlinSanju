@@ -1,4 +1,4 @@
-package com.mobatia.nasmanila.customviews.custombutton
+package com.mobatia.nasmanila.custom_views.custom_button
 
 import android.content.Context
 import android.graphics.Typeface

@@ -57,7 +57,7 @@
         >
 
 
-        <com.mobatia.nasmanila.customviews.customtext.CustomFontSansProTextBlackSemiBold
+        <com.mobatia.nasmanila.custom_views.custom_text.CustomFontSansProTextBlackSemiBold
 
             android:id="@+id/alertHead"
             android:layout_width="wrap_content"
@@ -71,7 +71,7 @@
             android:textColor="#ff000000"
             android:textSize="18sp" />
 
-        <com.mobatia.nasmanila.customviews.customtext.CustomFontSansProTextBlack
+        <com.mobatia.nasmanila.custom_views.custom_text.CustomFontSansProTextBlack
 
             android:id="@+id/textDialog"
             android:layout_width="wrap_content"

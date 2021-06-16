@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_alignParentLeft="true" />
 
-    <com.mobatia.nasmanila.customviews.customtext.CustomFontSansProTextWhiteSemiBold
+    <com.mobatia.nasmanila.custom_views.custom_text.CustomFontSansProTextWhiteSemiBold
         android:id="@+id/listTxtView"
         style="@style/textstyleListItemsNew"
         android:layout_width="wrap_content"
