@@ -15,10 +15,7 @@ import android.provider.Settings.Secure
 import android.provider.Settings.Secure.*
 import android.view.View
 import android.view.Window
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ProgressBar
-import android.widget.TextView
+import android.widget.*
 import com.google.firebase.iid.FirebaseInstanceId
 import com.mobatia.nasmanila.R
 import com.mobatia.nasmanila.activities.home.HomeListActivity
@@ -500,7 +497,8 @@ class LoginActivity : AppCompatActivity() {
             userNameEdtTxt!!.text.toString(),
             passwordEdtTxt!!.text.toString(),
             "2",
-            FirebaseInstanceId.getInstance().id,
+//            FirebaseInstanceId.getInstance().id ,
+            "0000000000",
             androidID
         )
         call.enqueue(object : Callback<ResponseBody> {
@@ -516,6 +514,7 @@ class LoginActivity : AppCompatActivity() {
                             val token = responseArray.optString("token")
                             PreferenceManager.setUserID(context, userCode)
                             PreferenceManager.setAccessToken(context, token)
+                            showDialogSignUpAlert((context as Activity?)!!, "Success", "Successfully Logged In", R.drawable.tick, R.drawable.round)
                         } else if (status == 110) {
                             AppUtils.showDialogAlertDismiss(context as Activity?,
                                 getString(R.string.error_heading),
@@ -542,6 +541,35 @@ class LoginActivity : AppCompatActivity() {
             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
             }
         })
+    }
+
+    private fun showDialogSignUpAlert(activity: Activity, messageHead: String, message: String, ico: Int, bgIcon: Int) {
+        val dialog = Dialog(activity)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.setCancelable(false)
+        dialog.setContentView(R.layout.alert_dialogue_ok_layout)
+        val icon = dialog.findViewById<View>(R.id.iconImageView) as ImageView
+        icon.setBackgroundResource(bgIcon)
+        icon.setImageResource(ico)
+        val text = dialog.findViewById<View>(R.id.text_dialog) as? TextView
+        val textHead = dialog.findViewById<View>(R.id.alertHead) as? TextView
+        if (text != null) {
+            text.text = message
+        }
+        if (textHead != null) {
+            textHead.text = messageHead
+        }
+
+        val dialogButton = dialog.findViewById<View>(R.id.btnOK) as Button
+        dialogButton.setOnClickListener {
+            dialog.dismiss()
+            val homeIntent = Intent(context, HomeListActivity::class.java)
+            startActivity(homeIntent)
+            finish()
+        }
+
+        dialog.show()
     }
 
 

@@ -62,7 +62,7 @@ class HomeListActivity : AppCompatActivity() {
     lateinit var extras: Bundle
     lateinit var drawerButton: ImageView
     lateinit var settingsButton: ImageView
-    lateinit var drawerToggle: ActionBarDrawerToggle
+    var drawerToggle: androidx.legacy.app.ActionBarDrawerToggle? = null
 
     private val PERMISSION_CALLBACK_CONSTANT_LOCATION = 3
     private val REQUEST_PERMISSION_LOCATION = 103
@@ -679,7 +679,7 @@ class HomeListActivity : AppCompatActivity() {
                 }
             }
         }
-        drawerToggle!!.syncState()
+//        drawerToggle!!.syncState()
     }
 
     @SuppressLint("Recycle")
@@ -726,9 +726,10 @@ class HomeListActivity : AppCompatActivity() {
         drawerLayout = findViewById<View>(R.id.drawer_layout) as DrawerLayout
 //                mHomeListView.setOnItemLongClickListener(this);
 //        mDetector = GestureDetector(this, GestureDetector.OnGestureListener)
-        drawerToggle = object : ActionBarDrawerToggle(
+        drawerToggle = object : androidx.legacy.app.ActionBarDrawerToggle(
             context as Activity?,
             drawerLayout,
+            R.drawable.hamburgerbtn,
             R.string.null_value,
             R.string.null_value
         )

@@ -1,5 +1,6 @@
 package com.mobatia.nasmanila.common.common_classes
 
+import android.app.Activity
 import android.content.Context
 import android.content.SharedPreferences
 import com.mobatia.nasmanila.R
@@ -15,6 +16,15 @@ class PreferenceManager {
                 context.getSharedPreferences(sharedPrefNas, Context.MODE_PRIVATE)
             userCode = sharedPreferences.getString("user_code", "").toString()
             return userCode
+        }
+        fun setUserCode(context: Context): String? {
+
+                val prefs = context.getSharedPreferences(
+                    sharedPrefNas,
+                    Context.MODE_PRIVATE
+                )
+                return prefs.getString("user_code", "")
+
         }
 
         fun setIsFirstLaunch(context: Context, result: Boolean) {
@@ -509,6 +519,497 @@ class PreferenceManager {
             editor.putString("btn_nine_tab", TAB_ID)
             editor.apply()
         }
+
+        fun getButtonOneGuestBg(context: Context): Int {
+        val prefs = context.getSharedPreferences(
+                sharedPrefNas,
+                Context.MODE_PRIVATE
+        )
+        return prefs.getInt(
+                "btn_one_guest_color", context.resources
+                .getColor(R.color.transparent)
+        )
+    }
+    fun setButtonOneGuestBg(context: Context, color: Int) {
+        val prefs = context.getSharedPreferences(
+                sharedPrefNas,
+                Context.MODE_PRIVATE
+        )
+        val editor = prefs.edit()
+        editor.putInt("btn_one_guest_color", color)
+        editor.apply()
+    }
+    fun getButtonOneGuestTextImage(context: Context): String? {
+        val prefs = context.getSharedPreferences(
+                sharedPrefNas,
+                Context.MODE_PRIVATE
+        )
+        return prefs.getString("btn_one_guest_pos", NaisTabConstants.TAB_NAS_TODAY)
+    }
+    fun setButtonOneGuestTextImage(
+            context: Context,
+            position: String?
+    ) {
+        val prefs = context.getSharedPreferences(
+                sharedPrefNas,
+                Context.MODE_PRIVATE
+        )
+        val editor = prefs.edit()
+        editor.putString("btn_one_guest_pos", position)
+        editor.apply()
+    }
+    fun getButtonOneGuestTabId(context: Context): String? {
+        val prefs = context.getSharedPreferences(
+                sharedPrefNas,
+                Context.MODE_PRIVATE
+        )
+        return prefs.getString("btn_one_guest_tab", NaisTabConstants.TAB_NAS_TODAY)
+    }
+    fun setButtonOneGuestTabId(context: Context, TAB_ID: String?) {
+        val prefs = context.getSharedPreferences(
+                sharedPrefNas,
+                Context.MODE_PRIVATE
+        )
+        val editor = prefs.edit()
+        editor.putString("btn_one_guest_tab", TAB_ID)
+        editor.apply()
+    }
+    fun getButtonTwoGuestBg(context: Context): Int {
+        val prefs = context.getSharedPreferences(
+                sharedPrefNas,
+                Context.MODE_PRIVATE
+        )
+        return prefs.getInt(
+                "btn_two_guest_color", context.resources
+                .getColor(R.color.transparent)
+        )
+    }
+    fun setButtonTwoGuestBg(context: Context, color: Int) {
+        val prefs = context.getSharedPreferences(
+                sharedPrefNas,
+                Context.MODE_PRIVATE
+        )
+        val editor = prefs.edit()
+        editor.putInt("btn_two_guest_color", color)
+        editor.apply()
+    }
+    fun getButtonTwoGuestTextImage(context: Context): String? {
+        val prefs = context.getSharedPreferences(
+                sharedPrefNas,
+                Context.MODE_PRIVATE
+        )
+        return prefs.getString("btn_two_guest_pos", NaisTabConstants.TAB_SOCIAL_MEDIA_GUEST)
+    }
+    fun setButtonTwoGuestTextImage(
+            context: Context,
+            position: String?
+    ) {
+        val prefs = context.getSharedPreferences(
+                sharedPrefNas,
+                Context.MODE_PRIVATE
+        )
+        val editor = prefs.edit()
+        editor.putString("btn_two_guest_pos", position)
+        editor.apply()
+    }
+    fun getButtonTwoGuestTabId(context: Context): String? {
+        val prefs = context.getSharedPreferences(
+                sharedPrefNas,
+                Context.MODE_PRIVATE
+        )
+        return prefs.getString("btn_two_guest_tab", NaisTabConstants.TAB_SOCIAL_MEDIA_GUEST)
+    }
+    fun setButtonTwoGuestTabId(context: Context, TAB_ID: String?) {
+        val prefs = context.getSharedPreferences(
+                sharedPrefNas,
+                Context.MODE_PRIVATE
+        )
+        val editor = prefs.edit()
+        editor.putString("btn_two_guest_tab", TAB_ID)
+        editor.apply()
+    }
+    fun getButtonThreeGuestBg(context: Context): Int {
+        val prefs = context.getSharedPreferences(
+                sharedPrefNas,
+                Context.MODE_PRIVATE
+        )
+        return prefs.getInt(
+                "btn_three_guest_color", context.resources
+                .getColor(R.color.transparent)
+        )
+    }
+    fun setButtonThreeGuestBg(context: Context, color: Int) {
+        val prefs = context.getSharedPreferences(
+                sharedPrefNas,
+                Context.MODE_PRIVATE
+        )
+        val editor = prefs.edit()
+        editor.putInt("btn_three_guest_color", color)
+        editor.apply()
+    }
+    fun getButtonThreeGuestTextImage(context: Context): String? {
+        val prefs = context.getSharedPreferences(
+                sharedPrefNas,
+                Context.MODE_PRIVATE
+        )
+        return prefs.getString("btn_three_guest_pos", NaisTabConstants.TAB_PARENT_ESSENTIALS_GUEST)
+    }
+    fun setButtonThreeGuestTextImage(
+            context: Context,
+            position: String?
+    ) {
+        val prefs = context.getSharedPreferences(
+                sharedPrefNas,
+                Context.MODE_PRIVATE
+        )
+        val editor = prefs.edit()
+        editor.putString("btn_three_guest_pos", position)
+        editor.apply()
+    }
+    fun getButtonThreeGuestTabId(context: Context): String? {
+        val prefs = context.getSharedPreferences(
+                sharedPrefNas,
+                Context.MODE_PRIVATE
+        )
+        return prefs.getString("btn_three_guest_tab", NaisTabConstants.TAB_PARENT_ESSENTIALS_GUEST)
+    }
+    fun setButtonThreeGuestTabId(context: Context, TAB_ID: String?) {
+        val prefs = context.getSharedPreferences(
+                sharedPrefNas,
+                Context.MODE_PRIVATE
+        )
+        val editor = prefs.edit()
+        editor.putString("btn_three_guest_tab", TAB_ID)
+        editor.apply()
+    }
+    fun getButtonFourGuestBg(context: Context): Int {
+        val prefs = context.getSharedPreferences(
+                sharedPrefNas,
+                Context.MODE_PRIVATE
+        )
+        return prefs.getInt(
+                "btn_four_guest_color", context.resources
+                .getColor(R.color.transparent)
+        )
+    }
+    fun setButtonFourGuestBg(context: Context, color: Int) {
+        val prefs = context.getSharedPreferences(
+                sharedPrefNas,
+                Context.MODE_PRIVATE
+        )
+        val editor = prefs.edit()
+        editor.putInt("btn_four_guest_color", color)
+        editor.apply()
+    }
+    fun getButtonFourGuestTextImage(context: Context): String? {
+        val prefs = context.getSharedPreferences(
+                sharedPrefNas,
+                Context.MODE_PRIVATE
+        )
+        return prefs.getString("btn_four_guest_pos", NaisTabConstants.TAB_SETTINGS)
+    }
+    fun setButtonFourGuestTextImage(
+            context: Context,
+            position: String?
+    ) {
+        val prefs = context.getSharedPreferences(
+                sharedPrefNas,
+                Context.MODE_PRIVATE
+        )
+        val editor = prefs.edit()
+        editor.putString("btn_four_guest_pos", position)
+        editor.apply()
+    }
+    fun getButtonFourGuestTabId(context: Context): String? {
+        val prefs = context.getSharedPreferences(
+                sharedPrefNas,
+                Context.MODE_PRIVATE
+        )
+        return prefs.getString("btn_four_guest_tab", NaisTabConstants.TAB_SETTINGS)
+    }
+    fun setButtonFourGuestTabId(context: Context, TAB_ID: String?) {
+        val prefs = context.getSharedPreferences(
+                sharedPrefNas,
+                Context.MODE_PRIVATE
+        )
+        val editor = prefs.edit()
+        editor.putString("btn_four_guest_tab", TAB_ID)
+        editor.apply()
+    }
+    fun getButtonFiveGuestBg(context: Context): Int {
+        val prefs = context.getSharedPreferences(
+                sharedPrefNas,
+                Context.MODE_PRIVATE
+        )
+        return prefs.getInt(
+                "btn_five_guest_color", context.resources
+                .getColor(R.color.transparent)
+        )
+    }
+    fun setButtonFiveGuestBg(context: Context, color: Int) {
+        val prefs = context.getSharedPreferences(
+                sharedPrefNas,
+                Context.MODE_PRIVATE
+        )
+        val editor = prefs.edit()
+        editor.putInt("btn_five_guest_color", color)
+        editor.apply()
+    }
+    fun getButtonFiveGuestTextImage(context: Context): String? {
+        val prefs = context.getSharedPreferences(
+                sharedPrefNas,
+                Context.MODE_PRIVATE
+        )
+        return prefs.getString("btn_five_guest_pos", NaisTabConstants.TAB_NOTIFICATIONS_GUEST)
+    }
+    fun setButtonFiveGuestTextImage(
+            context: Context,
+            position: String?
+    ) {
+        val prefs = context.getSharedPreferences(
+                sharedPrefNas,
+                Context.MODE_PRIVATE
+        )
+        val editor = prefs.edit()
+        editor.putString("btn_five_guest_pos", position)
+        editor.apply()
+    }
+    fun getButtonFiveGuestTabId(context: Context): String? {
+        val prefs = context.getSharedPreferences(
+                sharedPrefNas,
+                Context.MODE_PRIVATE
+        )
+        return prefs.getString("btn_five_guest_tab", NaisTabConstants.TAB_NOTIFICATIONS_GUEST)
+    }
+    fun setButtonFiveGuestTabId(context: Context, TAB_ID: String?) {
+        val prefs = context.getSharedPreferences(
+                sharedPrefNas,
+                Context.MODE_PRIVATE
+        )
+        val editor = prefs.edit()
+        editor.putString("btn_five_guest_tab", TAB_ID)
+        editor.apply()
+    }
+    fun getButtonSixGuestBg(context: Context): Int {
+        val prefs = context.getSharedPreferences(
+                sharedPrefNas,
+                Context.MODE_PRIVATE
+        )
+        return prefs.getInt(
+                "btn_six_guest_color", context.resources
+                .getColor(R.color.transparent)
+        )
+    }
+    fun setButtonSixGuestBg(context: Context, color: Int) {
+        val prefs = context.getSharedPreferences(
+                sharedPrefNas,
+                Context.MODE_PRIVATE
+        )
+        val editor = prefs.edit()
+        editor.putInt("btn_six_guest_color", color)
+        editor.apply()
+    }
+    fun getButtonSixGuestTextImage(context: Context): String? {
+        val prefs = context.getSharedPreferences(
+                sharedPrefNas,
+                Context.MODE_PRIVATE
+        )
+        return prefs.getString("btn_six_guest_pos", NaisTabConstants.TAB_PROGRAMMES_GUEST)
+    }
+    fun setButtonSixGuestTextImage(
+            context: Context,
+            position: String?
+    ) {
+        val prefs = context.getSharedPreferences(
+                sharedPrefNas,
+                Context.MODE_PRIVATE
+        )
+        val editor = prefs.edit()
+        editor.putString("btn_six_guest_pos", position)
+        editor.apply()
+    }
+    fun getButtonSixGuestTabId(context: Context): String? {
+        val prefs = context.getSharedPreferences(
+                sharedPrefNas,
+                Context.MODE_PRIVATE
+        )
+        return prefs.getString("btn_six_guest_tab", NaisTabConstants.TAB_PROGRAMMES_GUEST)
+    }
+    fun setButtonSixGuestTabId(context: Context, TAB_ID: String?) {
+        val prefs = context.getSharedPreferences(
+                sharedPrefNas,
+                Context.MODE_PRIVATE
+        )
+        val editor = prefs.edit()
+        editor.putString("btn_six_guest_tab", TAB_ID)
+        editor.apply()
+    }
+    fun getButtonSevenGuestBg(context: Context): Int {
+        val prefs = context.getSharedPreferences(
+                sharedPrefNas,
+                Context.MODE_PRIVATE
+        )
+        return prefs.getInt(
+                "btn_seven_guest_color", context.resources
+                .getColor(R.color.transparent)
+        )
+    }
+    fun setButtonSevenGuestBg(context: Context, color: Int) {
+        val prefs = context.getSharedPreferences(
+                sharedPrefNas,
+                Context.MODE_PRIVATE
+        )
+        val editor = prefs.edit()
+        editor.putInt("btn_seven_guest_color", color)
+        editor.apply()
+    }
+    fun getButtonSevenGuestTextImage(context: Context): String? {
+        val prefs = context.getSharedPreferences(
+                sharedPrefNas,
+                Context.MODE_PRIVATE
+        )
+        return prefs.getString("btn_seven_guest_pos", NaisTabConstants.TAB_CONTACT_US_GUEST)
+    }
+    fun setButtonSevenGuestTextImage(
+            context: Context,
+            position: String?
+    ) {
+        val prefs = context.getSharedPreferences(
+                sharedPrefNas,
+                Context.MODE_PRIVATE
+        )
+        val editor = prefs.edit()
+        editor.putString("btn_seven_guest_pos", position)
+        editor.apply()
+    }
+    fun getButtonSevenGuestTabId(context: Context): String? {
+        val prefs = context.getSharedPreferences(
+                sharedPrefNas,
+                Context.MODE_PRIVATE
+        )
+        return prefs.getString("btn_seven_guest_tab", NaisTabConstants.TAB_CONTACT_US_GUEST)
+    }
+    fun setButtonSevenGuestTabId(context: Context, TAB_ID: String?) {
+        val prefs = context.getSharedPreferences(
+                sharedPrefNas,
+                Context.MODE_PRIVATE
+        )
+        val editor = prefs.edit()
+        editor.putString("btn_seven_guest_tab", TAB_ID)
+        editor.apply()
+    }
+    fun getButtonEightGuestBg(context: Context): Int {
+        val prefs = context.getSharedPreferences(
+                sharedPrefNas,
+                Context.MODE_PRIVATE
+        )
+        return prefs.getInt(
+                "btn_eight_guest_color", context.resources
+                .getColor(R.color.transparent)
+        )
+    }
+    fun setButtonEightGuestBg(context: Context, color: Int) {
+        val prefs = context.getSharedPreferences(
+                sharedPrefNas,
+                Context.MODE_PRIVATE
+        )
+        val editor = prefs.edit()
+        editor.putInt("btn_eight_guest_color", color)
+        editor.apply()
+    }
+    fun getButtonEightGuestTextImage(context: Context): String? {
+        val prefs = context.getSharedPreferences(
+                sharedPrefNas,
+                Context.MODE_PRIVATE
+        )
+        return prefs.getString(
+                "btn_eight_guest_pos",
+                NaisTabConstants.TAB_ABOUT_US_GUEST
+        )
+    }
+    fun setButtonEightGuestTextImage(
+            context: Context,
+            position: String?
+    ) {
+        val prefs = context.getSharedPreferences(
+                sharedPrefNas,
+                Context.MODE_PRIVATE
+        )
+        val editor = prefs.edit()
+        editor.putString("btn_eight_guest_pos", position)
+        editor.apply()
+    }
+    fun getButtonEightGuestTabId(context: Context): String? {
+        val prefs = context.getSharedPreferences(
+                sharedPrefNas,
+                Context.MODE_PRIVATE
+        )
+        return prefs.getString("btn_eight_guest_tab", NaisTabConstants.TAB_ABOUT_US_GUEST)
+    }
+    fun setButtonEightGuestTabId(context: Context, TAB_ID: String?) {
+        val prefs = context.getSharedPreferences(
+                sharedPrefNas,
+                Context.MODE_PRIVATE
+        )
+        val editor = prefs.edit()
+        editor.putString("btn_eight_guest_tab", TAB_ID)
+        editor.apply()
+    }
+    fun getButtonNineGuestBg(context: Context): Int {
+        val prefs = context.getSharedPreferences(
+                sharedPrefNas,
+                Context.MODE_PRIVATE
+        )
+        return prefs.getInt(
+                "btn_nine_guest_color", context.resources
+                .getColor(R.color.transparent)
+        )
+    }
+    fun setButtonNineGuestBg(context: Context, color: Int) {
+        val prefs = context.getSharedPreferences(
+                sharedPrefNas,
+                Context.MODE_PRIVATE
+        )
+        val editor = prefs.edit()
+        editor.putInt("btn_nine_guest_color", color)
+        editor.apply()
+    }
+    fun getButtonNineGuestTextImage(context: Context): String? {
+        val prefs = context.getSharedPreferences(
+                sharedPrefNas,
+                Context.MODE_PRIVATE
+        )
+        return prefs.getString("btn_nine_guest_pos", NaisTabConstants.TAB_LOGOUT_GUEST)
+    }
+    fun setButtonNineGuestTextImage(
+            context: Context,
+            position: String?
+    ) {
+        val prefs = context.getSharedPreferences(
+                sharedPrefNas,
+                Context.MODE_PRIVATE
+        )
+        val editor = prefs.edit()
+        editor.putString("btn_nine_guest_pos", position)
+        editor.apply()
+    }
+    fun getButtonNineGuestTabId(context: Context): String? {
+        val prefs = context.getSharedPreferences(
+                sharedPrefNas,
+                Context.MODE_PRIVATE
+        )
+        return prefs.getString("btn_nine_guest_tab", NaisTabConstants.TAB_LOGOUT_GUEST)
+    }
+    fun setButtonNineGuestTabId(context: Context, TAB_ID: String?) {
+        val prefs = context.getSharedPreferences(
+                sharedPrefNas,
+                Context.MODE_PRIVATE
+        )
+        val editor = prefs.edit()
+        editor.putString("btn_nine_guest_tab", TAB_ID)
+        editor.apply()
+    }
+
 
 
 

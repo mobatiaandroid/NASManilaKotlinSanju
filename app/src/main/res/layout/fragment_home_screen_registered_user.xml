@@ -28,7 +28,7 @@
                 android:scaleType="centerInside"
                 android:src="@drawable/default_banner_british" />
 
-            <com.mobatia.nasmanila.customviews.custom_viewpager.NonSwipableViewpager
+            <com.mobatia.nasmanila.custom_views.custom_viewpager.NonSwipableViewpager
                 android:id="@+id/bannerImagePager"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />

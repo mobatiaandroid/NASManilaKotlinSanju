@@ -1,4 +1,4 @@
-package com.mobatia.nasmanila.customviews.custom_viewpager
+package com.mobatia.nasmanila.custom_views.custom_viewpager
 
 import android.content.Context
 import android.util.AttributeSet
