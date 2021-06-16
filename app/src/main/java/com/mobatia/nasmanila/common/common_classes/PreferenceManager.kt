@@ -1010,7 +1010,25 @@ class PreferenceManager {
         editor.apply()
     }
 
+        fun getUserEmail(context: Context): Any {
+            var userid: String
+            val prefs = context.getSharedPreferences(
+                sharedPrefNas,
+                Context.MODE_PRIVATE
+            )
+            userid = prefs.getString("user_email", "").toString()
+            return userid
+        }
 
+        fun setGoToSettings(context: Context, mGoToSetting: String) {
+            val prefs = context.getSharedPreferences(
+                sharedPrefNas,
+                Context.MODE_PRIVATE
+            )
+            val editor = prefs.edit()
+            editor.putString("GoToSetting", mGoToSetting)
+            editor.apply()
+        }
 
 
     }

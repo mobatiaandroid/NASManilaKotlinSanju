@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NASManilaKotlin"
         tools:targetApi="n">
-        <activity android:name=".activities.notification.VideoAlertActivity"></activity>
+        <activity android:name=".activities.terms_of_service.TermsOfServiceActivity"></activity>
+        <activity android:name=".activities.notification.VideoAlertActivity" />
         <activity android:name=".activities.notification.ImageAlertActivity" />
         <activity android:name=".activities.notification.AudioAlertActivity" />
         <activity android:name=".activities.notification.TextAlertActivity" />
