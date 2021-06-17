@@ -47,6 +47,12 @@ interface ApiService {
         @Field("start") start: Int,
         @Field("limit") limit: Int
     ): Call<ResponseBody>
+
+    @FormUrlEncoded
+    @POST("api/v1/notification/details")
+    fun pushNotificationDetail(
+        @Field("notification_id")pushID: String
+    ): Call<ResponseBody>
 //    @FormUrlEncoded
 //    @POST("api/parent_signup")
 //    fun signUp(

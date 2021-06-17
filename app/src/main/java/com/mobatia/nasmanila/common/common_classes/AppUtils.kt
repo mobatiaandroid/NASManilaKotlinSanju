@@ -167,6 +167,12 @@ class AppUtils {
             dialogButtonCancel.setOnClickListener { dialog.dismiss() }
             dialog.show()
         }
+        fun durationInSecondsToString(sec: Int): CharSequence? {
+            val hours: Int = sec / 3600
+            val minutes: Int = sec / 60 - hours * 60
+            val seconds: Int = sec - hours * 3600 - minutes * 60
+            return String.format("%d:%02d:%02d", hours, minutes, seconds)
+        }
 
         var progressBarDialog: ProgressBarDialog? = null
         fun callLogoutApi(activity: Activity, dialog: Dialog) {
