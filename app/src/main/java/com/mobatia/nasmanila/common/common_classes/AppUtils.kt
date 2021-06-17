@@ -9,6 +9,7 @@ import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.StateListDrawable
 import android.net.ConnectivityManager
+import android.os.Build
 import android.util.Patterns
 import android.view.View
 import android.view.Window
@@ -217,6 +218,39 @@ class AppUtils {
 
             })
 
+        }
+
+        fun showAlertFinish(activity: Activity?, message: String, okBtnTitle: String, cancelBtnTitle: String, okBtnVisibility: Boolean) {
+
+
+            val dialog = Dialog(activity!!, R.style.NewDialog)
+            dialog.setContentView(R.layout.custom_alert_dialog)
+            dialog.setCancelable(false)
+            val text = dialog.findViewById<View>(R.id.text) as TextView
+            text.text = message
+            val sdk = Build.VERSION.SDK_INT
+
+            val dialogCancelButton = dialog
+                .findViewById<View>(R.id.dialogButtonCancel) as Button
+            dialogCancelButton.text = cancelBtnTitle
+
+            dialogCancelButton.setOnClickListener {
+                dialog.dismiss()
+                activity.finish()
+            }
+
+            val dialogOkButton = dialog
+                .findViewById<View>(R.id.dialogButtonOK) as Button
+            dialogOkButton.visibility = View.GONE
+            dialogOkButton.text = okBtnTitle
+            if (okBtnVisibility) {
+                dialogOkButton.visibility = View.VISIBLE
+                dialogOkButton.setOnClickListener {
+                    dialog.dismiss()
+                    activity.finish()
+                }
+            }
+            dialog.show()
         }
     }
 }
