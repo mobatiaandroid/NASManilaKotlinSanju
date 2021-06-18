@@ -53,6 +53,17 @@ interface ApiService {
     fun pushNotificationDetail(
         @Field("notification_id")pushID: String
     ): Call<ResponseBody>
+
+    @POST("api/v1/about_us")
+    fun aboutUsListCall(): Call<ResponseBody>
+
+    @FormUrlEncoded
+    @POST("api/v1/sendemail")
+    fun sendEmailToStaffCall(
+        @Field("staff_email")staffEmail:  String,
+        @Field("title")title:  String,
+        @Field("message")message:  String
+    ): Call<ResponseBody>
 //    @FormUrlEncoded
 //    @POST("api/parent_signup")
 //    fun signUp(

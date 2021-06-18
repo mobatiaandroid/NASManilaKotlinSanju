@@ -1,26 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/relMain"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white">
 
-    <com.mobatia.nasmanila.custom_views.custom_text.CustomFontDJ5TextWhite
-        android:id="@+id/titleTextView"
+    <RelativeLayout
+        android:id="@+id/relativeHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/split_bg"
-        android:gravity="center"
-        android:paddingBottom="5dp"
-        android:paddingTop="5dp"
-        android:text="Title"
-        android:textColor="@color/white"
-        android:textSize="17dp" />
+        android:layout_alignParentTop="true" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/titleTextView"
+        android:layout_below="@+id/relativeHeader"
         android:orientation="vertical"
         android:weightSum="100">
 
@@ -29,7 +25,6 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="30"
-            android:focusable="true"
             android:background="@drawable/default_banner_british"/>
 
         <RelativeLayout
@@ -40,22 +35,21 @@
             android:layout_weight="70">
 
             <ScrollView
-                android:id="@+id/scrollView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:overScrollMode="never"
+
                 android:scrollbars="none">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:focusableInTouchMode="true">
+                    android:layout_height="wrap_content">
 
                     <RelativeLayout
                         android:id="@+id/title"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp">
+                        android:layout_marginTop="5dp"
+                        android:layout_height="wrap_content">
 
                         <ImageView
                             android:id="@+id/sendEmail"
@@ -63,7 +57,7 @@
                             android:layout_height="35dp"
                             android:layout_alignParentRight="true"
                             android:src="@drawable/mailiconpe"
-                            android:visibility="invisible" />
+                            android:visibility="visible" />
 
                         <com.mobatia.nasmanila.custom_views.custom_text.CustomFontSansProTextBlackSemiBold
                             android:id="@+id/descriptionTitle"
@@ -71,50 +65,51 @@
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
                             android:layout_marginRight="10dp"
-                            android:layout_toLeftOf="@+id/mailImageView"
                             android:singleLine="true"
                             android:text="@string/introduction"
                             android:textColor="@color/black"
                             android:textSize="16sp"
-                            android:visibility="invisible"
-                            tools:ignore="UnknownId" />
+                            android:visibility="visible" />
                     </RelativeLayout>
 
-                    <com.mobatia.nasmanila.custom_views.custom_text.CustomFontSansProTextBlack
-                        android:id="@+id/description"
+
+                    <com.mobatia.nasmanila.custom_views.custom_text.CustomFontBoldWithoutColor
+                        android:id="@+id/descriptionTV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/title"
                         android:layout_marginTop="5dp"
-                        android:text="@string/lores_ipsum"
+                        android:text="Introduction"
+                        app:justified="true"
+
                         android:textColor="@color/black"
                         android:textSize="16sp"
-                        android:visibility="invisible" />
-
+                        android:visibility="gone" />
                     <com.mobatia.nasmanila.custom_views.custom_text.CustomFontSansProTextWhiteWithoutColor
-                        android:id="@+id/weburl"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/description"
-                        android:layout_marginRight="10dp"
+                        android:text="http://www.nordangliaeducation.com/our-schools/manila/our-school/our-uniform"
+                        android:layout_marginLeft="10dp"
+                        android:singleLine="true"
+                        android:id="@+id/weburl"
+                        android:visibility="gone"
+                        android:layout_below="@+id/descriptionTV"
                         android:layout_marginTop="10dp"
-                        android:singleLine="false"
-                        android:visibility="invisible"
-                        android:text="https://www.nordangliaeducation.com/our-schools/philippines/manila/international/contact"
-                        android:textColor="@color/dark_blue" />
-
+                        android:layout_marginRight="10dp"
+                        android:textColor="@color/dark_blue"
+                        />
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/mAboutUsListView"
-                        style="@style/ListStyleBlackTextTransparentSelector"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_below="@+id/weburl" />
-
+                        android:layout_below="@+id/weburl"
+                        android:layout_marginTop="5dp"
+                        android:background="@color/white"
+                        android:clipToPadding="false"
+                        android:overScrollMode="never"
+                        android:scrollbars="vertical" />
                 </RelativeLayout>
-
             </ScrollView>
         </RelativeLayout>
-
     </LinearLayout>
-
 </RelativeLayout>

@@ -28,10 +28,10 @@ import com.mobatia.nasmanila.common.common_classes.AppUtils
 import com.mobatia.nasmanila.common.constants.NaisClassNameConstants
 import com.mobatia.nasmanila.fragments.notifications.adapter.PushNotificationListAdapter
 import com.mobatia.nasmanila.fragments.notifications.model.PushNotificationModel
-import com.mobatia.nasmanila.manager.recyclermanager.DividerItemDecoration
+import com.mobatia.nasmanila.common.common_classes.DividerItemDecoration
 import com.mobatia.nasmanila.manager.recyclermanager.ItemOffsetDecoration
-import com.mobatia.nasmanila.manager.recyclermanager.OnItemClickListener
-import com.mobatia.nasmanila.manager.recyclermanager.addOnItemClickListener
+import com.mobatia.nasmanila.common.common_classes.OnItemClickListener
+import com.mobatia.nasmanila.common.common_classes.addOnItemClickListener
 import me.leolin.shortcutbadger.ShortcutBadger
 import okhttp3.ResponseBody
 import org.json.JSONArray

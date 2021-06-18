@@ -1,4 +1,4 @@
-package com.mobatia.nasmanila.manager.recyclermanager
+package com.mobatia.nasmanila.common.common_classes
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView

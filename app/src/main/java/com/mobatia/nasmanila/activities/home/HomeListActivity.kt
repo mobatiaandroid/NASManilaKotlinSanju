@@ -1,6 +1,5 @@
 package com.mobatia.nasmanila.activities.home
 
-import HomeScreenRegisteredUserFragment
 import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -25,7 +24,6 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ActivityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
-import androidx.appcompat.app.ActionBarDrawerToggle
 import com.mobatia.nasmanila.R
 import com.mobatia.nasmanila.activities.home.adapter.HomeListAdapter
 import com.mobatia.nasmanila.common.common_classes.PreferenceManager

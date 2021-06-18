@@ -1,4 +1,4 @@
-package com.mobatia.nasmanila.manager.recyclermanager
+package com.mobatia.nasmanila.common.common_classes
 
 import android.graphics.Canvas
 import android.graphics.drawable.Drawable

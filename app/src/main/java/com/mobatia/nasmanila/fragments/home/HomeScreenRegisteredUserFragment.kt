@@ -1,3 +1,5 @@
+package com.mobatia.nasmanila.fragments.home
+
 import android.Manifest
 import android.content.Context
 import android.content.Intent
@@ -45,15 +47,22 @@ import retrofit2.Response
 import java.util.*
 import kotlin.collections.ArrayList
 
-class HomeScreenRegisteredUserFragment(
-    s: String,
-    mDrawerLayout: DrawerLayout,
-    mHomeListView: ListView,
-    mLinearLayout: LinearLayout,
-    mListItemArray: Array<String>,
-    mListImgArray: TypedArray
-) : Fragment() {
+// TODO: Rename parameter arguments, choose names that match
+// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+private const val ARG_PARAM1 = "param1"
+private const val ARG_PARAM2 = "param2"
 
+/**
+ * A simple [Fragment] subclass.
+ * Use the [HomeScreenRegisteredUserFragment2.newInstance] factory method to
+ * create an instance of this fragment.
+ */
+class HomeScreenRegisteredUserFragment2( s: String,
+                                         mDrawerLayout: DrawerLayout,
+                                         mHomeListView: ListView,
+                                         mLinearLayout: LinearLayout,
+                                         mListItemArray: Array<String>,
+                                         mListImgArray: TypedArray) : Fragment() {
     lateinit var rootView: View
     private var mContext: Context? = null
     var title: String = s
@@ -675,6 +684,4 @@ class HomeScreenRegisteredUserFragment(
                 progressBarDialog!!.dismiss()            }
         })
     }
-
-
 }
