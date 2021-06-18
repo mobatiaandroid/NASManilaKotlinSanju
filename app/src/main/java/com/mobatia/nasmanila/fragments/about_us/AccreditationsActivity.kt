@@ -14,6 +14,7 @@ import com.mobatia.nasmanila.activities.home.HomeListActivity
 import com.mobatia.nasmanila.common.common_classes.AppUtils
 import com.mobatia.nasmanila.common.common_classes.HeaderManager
 import com.mobatia.nasmanila.common.constants.NaisClassNameConstants
+import com.mobatia.nasmanila.fragments.about_us.adapter.AccreditationsRecyclerViewAdapter
 import com.mobatia.nasmanila.fragments.about_us.model.AboutUsModel
 
 class AccreditationsActivity : AppCompatActivity() {
@@ -75,6 +76,6 @@ class AccreditationsActivity : AppCompatActivity() {
             .into(bannerImagePager!!)
 
         val recyclerViewAdapter = AccreditationsRecyclerViewAdapter(mContext!!, mAboutUsListArray!!)
-        mTermsCalendarListView!!.adapter = recyclerViewAdapter
+//        mTermsCalendarListView!!.adapter = recyclerViewAdapter
     }
 }

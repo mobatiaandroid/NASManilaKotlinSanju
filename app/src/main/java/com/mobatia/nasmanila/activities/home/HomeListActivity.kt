@@ -287,7 +287,7 @@ class HomeListActivity : AppCompatActivity() {
         } else {
             when (position) {
                 0 -> {
-                    fragment = HomeScreenRegisteredUserFragment(
+                    fragment = HomeScreenGuestUserFragment(
                         listItemArray[position],
                         drawerLayout,
                         homeListView,
