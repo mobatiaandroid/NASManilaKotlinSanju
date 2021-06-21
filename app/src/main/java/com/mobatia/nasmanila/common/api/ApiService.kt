@@ -64,6 +64,9 @@ interface ApiService {
         @Field("title")title:  String,
         @Field("message")message:  String
     ): Call<ResponseBody>
+
+    @POST("api/v1/social_media")
+    fun socialMediaListCall(): Call<ResponseBody>
 //    @FormUrlEncoded
 //    @POST("api/parent_signup")
 //    fun signUp(
