@@ -67,6 +67,11 @@ interface ApiService {
 
     @POST("api/v1/social_media")
     fun socialMediaListCall(): Call<ResponseBody>
+
+    @POST("")
+    fun nasTodayListCall(): Call<ResponseBody>
+
+    fun newsLetterCategoryCall(): Call<ResponseBody>
 //    @FormUrlEncoded
 //    @POST("api/parent_signup")
 //    fun signUp(

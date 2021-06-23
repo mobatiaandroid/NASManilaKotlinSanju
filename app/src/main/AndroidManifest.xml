@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NASManilaKotlin"
         tools:targetApi="n">
-        <activity android:name=".activities.pdf.PDFViewActivity"></activity>
+        <activity android:name=".activities.parent_essential.ParentEssentialActivity"></activity>
+        <activity android:name=".activities.pdf.PDFViewActivity" />
         <activity android:name=".activities.web_view.LoadUrlWebViewActivity" />
         <activity android:name=".fragments.about_us.FacilityActivity" />
         <activity android:name=".fragments.about_us.AccreditationsActivity" />
